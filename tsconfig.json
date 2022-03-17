@@ -1,29 +1,38 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2019",
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "esnext",
+    "noImplicitAny": true,
 
-        "strict": true,
-        "noFallthroughCasesInSwitch": true,
-        "experimentalDecorators": true,
-        "noUnusedLocals": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
 
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "outDir": "dist",
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-                "src/types/*"
-            ]
-        },
-        "lib": [
-          "DOM",
-          "ES2019"
-        ],
-        "declaration": true
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/types/*"]
     },
-    "include": [
-        "src/**/*"
-    ]
+    "lib": [
+      "DOM",
+      "ES5",
+      "ES2015",
+      "ES2016",
+      "ES2017",
+      "ES2018",
+      "ES2019",
+      "ESNext.bigint",
+      "ESNext"
+    ],
+    "declaration": true
+  },
+  "include": ["src/**/*"]
 }

@@ -7,7 +7,7 @@
     "prepublishOnly": "tsc",
     "build": "tsc",
     "start": "node dist/index.js",
-    "start:watch": "npx tsc-watch --onSuccess 'node dist/index.js'",
+    "start:watch": "npx tsc-watch --onSuccess \"node ./dist/index.js\"",
     "watch": "tsc --watch",
     "lint": "eslint --quiet 'src/*.ts'",
     "fix": "eslint --quiet 'src/**/*.ts' --fix"
@@ -47,7 +47,10 @@
     "@curveball/bodyparser": "^0.4.6",
     "@curveball/controller": "^0.3.0",
     "@curveball/core": "^0.16.3",
+    "@curveball/cors": "^0.1.6",
     "@curveball/problem": "^0.3.0",
-    "@curveball/router": "^0.3.0"
+    "@curveball/router": "^0.3.0",
+    "dotenv": "^16.0.0",
+    "mysql2": "^2.3.3"
   }
 }
