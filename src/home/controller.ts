@@ -1,23 +1,24 @@
 import Controller from '@curveball/controller';
 import { Context } from '@curveball/core';
 import db from '../database';
+import { home } from './formats/hal';
 
 const itemFields = [
-  'items.id as item_id',
+  'items.item_id',
   'items.content',
   'items.column_id',
-  'items.position as item_position',
+  'items.item_position',
 ];
 const columnFields = [
-  'columns.id as column_id',
+  'columns.column_id',
   'columns.title',
-  'columns.position as column_position',
+  'columns.column_position',
   'columns.board_id',
 ];
 
 const query = `SELECT ${columnFields
   .concat(itemFields)
-  .join(', ')} FROM items JOIN columns ON items.column_id = columns.id`;
+  .join(', ')} FROM items JOIN columns ON items.column_id = columns.column_id`;
 
 class HomeController extends Controller {
   async get(ctx: Context) {
@@ -47,17 +48,18 @@ class HomeController extends Controller {
       items[itemId] = {
         id: itemId,
         content: element.content,
+        position: element.position,
       };
 
       columns[columnId].itemIds[element.item_position - 1] = itemId;
     });
 
-    ctx.response.type = 'application/json';
-    ctx.response.body = {
+    ctx.response.type = 'application/hal+json';
+    ctx.response.body = home({
       items: items,
       columns: columns,
       columnOrder: columnOrder,
-    };
+    });
   }
 }
 

@@ -4,8 +4,11 @@ import db from '../../database';
 
 class ColumnItemController extends Controller {
   async get(ctx: Context) {
-    const id = ctx.params.id;
-    const [column] = await db.query('SELECT * from columns WHERE id = ?', id);
+    const id = parseInt(ctx.params.id, 10);
+    const [column] = await db.query(
+      'SELECT * from columns WHERE column_id = ?',
+      id
+    );
     ctx.response.type = 'application/json';
     ctx.response.body = column;
   }
