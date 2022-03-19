@@ -1,12 +1,12 @@
 import { Controller } from '@curveball/controller/dist';
 import { Context } from '@curveball/core';
-import db from '../../database';
+import { findAllBoards } from '../service';
 
 class ColumnCollectionController extends Controller {
   async get(ctx: Context) {
-    const [columns] = await db.query('SELECT * from columns');
+    const boards = await findAllBoards();
     ctx.response.type = 'application/json';
-    ctx.response.body = columns;
+    ctx.response.body = boards;
   }
 }
 
