@@ -4,9 +4,12 @@ import problem from '@curveball/problem';
 import cors from '@curveball/cors';
 import bodyParser from '@curveball/bodyparser';
 import routes from './routes';
+import browser from '@curveball/browser';
 import 'dotenv/config';
 
 const app = new Application();
+
+app.use(browser({ theme: 'lfo' }));
 
 app.use(cors());
 

@@ -1,5 +1,5 @@
 {
-  "name": "@curveball/starter",
+  "name": "kanban-board",
   "version": "0.0.1",
   "description": "Minimal curveball starter template",
   "main": "dist/index.js",
@@ -45,6 +45,7 @@
   "dependencies": {
     "@curveball/accesslog": "^0.2.0",
     "@curveball/bodyparser": "^0.4.6",
+    "@curveball/browser": "^0.16.5",
     "@curveball/controller": "^0.3.0",
     "@curveball/core": "^0.16.3",
     "@curveball/cors": "^0.1.6",
