@@ -26,6 +26,7 @@ class HomeController extends Controller {
     const [columnRow] = await db.query(
       `SELECT ${columnFields.join(', ')} FROM columns`
     );
+
     const items: any = {};
     const columns: any = {};
     const columnOrder: any = [];
