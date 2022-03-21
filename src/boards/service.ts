@@ -6,6 +6,6 @@ export const findAllBoards = async () => {
 };
 
 export const findBoardById = async (id: number) => {
-  const [board] = await db.query('SELECT * from boards WHERE id = ?', id);
+  const [board] = await db.query('SELECT * from boards WHERE board_id = ?', id);
   return board;
 };

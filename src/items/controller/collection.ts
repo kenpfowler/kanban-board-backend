@@ -1,12 +1,13 @@
 import { Controller } from '@curveball/controller/dist';
 import { Context } from '@curveball/core';
-import db from '../../database';
+import { findAllItems } from '../service';
+import * as hal from '../format/hal';
 
 class ItemCollectionController extends Controller {
   async get(ctx: Context) {
-    const [items] = await db.query('SELECT * from items');
-    ctx.response.type = 'application/json';
-    ctx.response.body = items;
+    const items = await findAllItems();
+    ctx.response.type = 'application/hal+json';
+    ctx.response.body = hal.formatCollection(items);
   }
 }
 

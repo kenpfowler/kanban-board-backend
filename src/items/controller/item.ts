@@ -1,14 +1,15 @@
 import { Controller } from '@curveball/controller/dist';
 import { Context } from '@curveball/core';
-import db from '../../database';
+import { findItemById } from '../service';
+import * as hal from '../format/hal';
 
-class ItemsItemController extends Controller {
+class ItemController extends Controller {
   async get(ctx: Context) {
-    const id = ctx.params.id;
-    const [items] = await db.query('SELECT * from items WHERE id = ?', id);
-    ctx.response.type = 'application/json';
-    ctx.response.body = items;
+    const id = parseInt(ctx.params.id, 10);
+    const [items] = await findItemById(id);
+    ctx.response.type = 'application/hal+json';
+    ctx.response.body = hal.formatItem(items);
   }
 }
 
-export default new ItemsItemController();
+export default new ItemController();

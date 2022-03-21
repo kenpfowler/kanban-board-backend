@@ -1,16 +1,14 @@
 import { Controller } from '@curveball/controller/dist';
 import { Context } from '@curveball/core';
-import db from '../../database';
+import { findColumnById } from '../service';
+import * as hal from '../format/hal';
 
 class ColumnItemController extends Controller {
   async get(ctx: Context) {
     const id = parseInt(ctx.params.id, 10);
-    const [column] = await db.query(
-      'SELECT * from columns WHERE column_id = ?',
-      id
-    );
-    ctx.response.type = 'application/json';
-    ctx.response.body = column;
+    const [column] = await findColumnById(id);
+    ctx.response.type = 'application/hal+json';
+    ctx.response.body = hal.item(column);
   }
 }
 

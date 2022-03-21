@@ -5,7 +5,7 @@ import ColumnCollectionController from './columns/controller/collection';
 import ColumnItemController from './columns/controller/item';
 import BoardCollectionController from './boards/controller/collection';
 import ItemCollectionController from './items/controller/collection';
-import ItemsItemController from './items/controller/item';
+import ItemController from './items/controller/item';
 
 export default [
   router('/', homeController),
@@ -14,5 +14,5 @@ export default [
   router('/columns', ColumnCollectionController),
   router('/columns/:id', ColumnItemController),
   router('/items', ItemCollectionController),
-  router('/items/:id', ItemsItemController),
+  router('/items/:id', ItemController),
 ];

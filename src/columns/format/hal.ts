@@ -1,6 +1,6 @@
 import { Column } from '../../types';
 
-export const formatColumn = (column: Column) => {
+export const item = (column: Column) => {
   return {
     _links: {
       self: {
@@ -11,11 +11,11 @@ export const formatColumn = (column: Column) => {
         href: '/columns',
       },
     },
-    column: column,
+    [`column-${column.column_id}`]: column,
   };
 };
 
-export const formatColumnCollection = (columns: Column[]) => {
+export const collection = (columns: Column[]) => {
   return {
     _links: {
       self: {
@@ -28,7 +28,7 @@ export const formatColumnCollection = (columns: Column[]) => {
     },
     total: columns.length,
     _embedded: {
-      item: columns.map((column) => formatColumn(column)),
+      column: columns.map((column) => item(column)),
     },
   };
 };
