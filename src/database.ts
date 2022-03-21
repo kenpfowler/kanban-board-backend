@@ -33,12 +33,21 @@ export default {
 async function getSettings() {
   let settings: any = {};
 
-  settings = {
-    user: process.env.MYSQL_USER_HEROKU,
-    password: process.env.MYSQL_PASSWORD_HEROKU,
-    database: process.env.MYSQL_DATABASE_HEROKU,
-    host: process.env.MYSQL_HOST_HEROKU,
-  };
+  if (process.env.NODE_ENV === 'production') {
+    settings = {
+      user: process.env.MYSQL_USER_HEROKU,
+      password: process.env.MYSQL_PASSWORD_HEROKU,
+      database: process.env.MYSQL_DATABASE_HEROKU,
+      host: process.env.MYSQL_HOST_HEROKU,
+    };
+  } else {
+    settings = {
+      user: process.env.MYSQL_USER_LOCAL,
+      password: process.env.MYSQL_PASSWORD_LOCAL,
+      database: process.env.MYSQL_DATABASE_LOCAL,
+      host: process.env.MYSQL_HOST_LOCAL,
+    };
+  }
 
   return settings;
 }
